@@ -1,8 +1,9 @@
 import { useState } from "react";
-import SidebarIcon from "./SidebarIcon";
 import { useNavigate } from "react-router-dom";
-import SidebarMenu from "./SidebarMenu";
 import useGetData from "../../../hooks/useGetData";
+import SidebarIcon from "./SidebarIcon/SidebarIcon";
+import SidebarSubMenu from "./SidebarMenu/SidebarSubMenu";
+import { SidebarContainer, SidebarIconsContainer } from "./SidebarStyles";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -28,8 +29,8 @@ function Sidebar() {
   };
 
   return (
-    <div className="flex relative bg-white z-40">
-      <div className="w-auto flex flex-col justify-center items-center gap-1 bg-white z-40">
+    <SidebarContainer>
+      <SidebarIconsContainer>
         <SidebarIcon
           src="/Aberturas.png"
           title="Aberturas"
@@ -54,16 +55,16 @@ function Sidebar() {
             onMenuItemClick("terminaciones");
           }}
         />
-      </div>
+      </SidebarIconsContainer>
 
-      <SidebarMenu
+      <SidebarSubMenu
         endpoint={endpoint}
         setEndpoint={setEndpoint}
         data={data}
         step={step}
         setStep={setStep}
       />
-    </div>
+    </SidebarContainer>
   );
 }
 

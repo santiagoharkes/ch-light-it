@@ -1,55 +1,36 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Transition, Menu } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import {
+  HeaderContainer,
+  LogoContainer,
+  MenuItem,
+  NavContainer,
+} from "./HeaderStyles";
+import { useNavigate } from "react-router-dom";
 
-function classNames(...classes) {
-  console.log(classes);
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export default function Header() {
+  const navigate = useNavigate();
 
   return (
-    <header className="bg-gray-900">
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-        aria-label="Global"
-      >
+    <HeaderContainer>
+      <NavContainer>
         {/* Logo */}
-        <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
-          </a>
-        </div>
-
-        {/* Mobile bars */}
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            // onClick={() => setMobileMenuOpen(true)}
-          >
-            <span className="sr-only">Open main menu</span>
-
-            <p>Bars</p>
-          </button>
-        </div>
+        <LogoContainer onClick={() => navigate("/")}>
+          <span className="sr-only">Santiago Harkes Challenge</span>
+          <img
+            className="w-auto h-8"
+            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            alt=""
+          />
+        </LogoContainer>
 
         {/* Menu dropdown */}
-        <Menu
-          as="div"
-          className="relative inline-block text-left hidden lg:block"
-        >
+        <Menu as="div" className="relative hidden text-left lg:block">
           <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
             Guardar y salir
             <ChevronDownIcon
-              className="-mr-1 h-5 w-5 text-gray-400"
+              className="w-5 h-5 -mr-1 text-gray-400"
               aria-hidden="true"
             />
           </Menu.Button>
@@ -63,52 +44,49 @@ export default function Example() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
-                      )}
+                    <MenuItem
+                      active={active}
+                      onClick={() =>
+                        console.log("Botón Guardar y salir clickeado")
+                      }
                     >
                       Guardar y salir
-                    </a>
+                    </MenuItem>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
-                      )}
+                    <MenuItem
+                      active={active}
+                      onClick={() =>
+                        console.log("Botón Salir sin guardar clickeado")
+                      }
                     >
                       Salir sin guardar
-                    </a>
+                    </MenuItem>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
-                      )}
+                    <MenuItem
+                      active={active}
+                      onClick={() =>
+                        console.log("Botón Guardar y continuar clickeado")
+                      }
                     >
                       Guardar y continuar
-                    </a>
+                    </MenuItem>
                   )}
                 </Menu.Item>
               </div>
             </Menu.Items>
           </Transition>
         </Menu>
-      </nav>
-    </header>
+      </NavContainer>
+    </HeaderContainer>
   );
 }
