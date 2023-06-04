@@ -55,9 +55,23 @@ export const StepTwoItemImageContainer = tw.div`
 `;
 
 export const StepTwoItemImage = tw.img`
-  object-cover w-full h-full duration-300 ease-in-out hover:scale-110 bg-gradient-to-r from-purple-500 to-pink-500
+  object-cover w-full h-full duration-300 ease-in-out hover:scale-110 bg-white
 `;
 
 export const StepTwoItemTitle = tw.p`
   text-center
+`;
+
+export const SidebarMenuArrowContainer = styled.div(({ active }) => [
+  tw`hidden cursor-pointer`,
+  active && tw`block`,
+]);
+
+export const SidebarMenuArrowSquare = styled.div`
+  transform: translate(0px, -50%) perspective(70px) rotateY(45deg);
+  ${tw`absolute w-[40px] h-[100px] bg-gray-100 top-[50%] left-[99%] rounded-tr-lg rounded-br-lg`}
+`;
+
+export const SidebarArrowContainer = tw.div`
+absolute w-[30px] h-[30px] top-[50%] left-[99%] translate-x-0 translate-y-[-50%] p-1 flex justify-center items-center
 `;

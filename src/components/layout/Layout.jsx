@@ -11,6 +11,10 @@ function Layout({ children }) {
         <Sidebar />
         <div className="flex-1">{children}</div>
       </div>
+
+      <div className="p-2 text-center bg-gray-900 text-slate-400">
+        Challenge Light-It ⚛️ Santiago Harkes
+      </div>
     </LayoutContainer>
   );
 }

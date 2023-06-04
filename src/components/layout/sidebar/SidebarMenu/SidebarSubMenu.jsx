@@ -2,6 +2,9 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { capitalLetter } from "../../../../utils/capitalLetter";
 import Spinner from "../../../spinner/Spinner";
 import {
+  SidebarArrowContainer,
+  SidebarMenuArrowContainer,
+  SidebarMenuArrowSquare,
   SidebarSubMenuStyled,
   StepItemsContainer,
   StepOneItem,
@@ -19,6 +22,12 @@ import {
 } from "./SidebarSubMenuStyles";
 
 function SidebarSubMenu({ endpoint, setEndpoint, data, step, setStep }) {
+  const addFallbackImage = (e) => {
+    console.dir(e.target.style);
+    e.target.src = "/noImage.jpg";
+    e.target.style.objectFit = "contain";
+  };
+
   return (
     <SidebarSubMenuStyled hasEndpoint={endpoint}>
       <SubMenuContent>
@@ -65,7 +74,11 @@ function SidebarSubMenu({ endpoint, setEndpoint, data, step, setStep }) {
                     {step.data.items.map((item, index) => (
                       <StepTwoItem key={`${item.name}-${index}`}>
                         <StepTwoItemImageContainer>
-                          <StepTwoItemImage src={item.img} alt="" />
+                          <StepTwoItemImage
+                            src={item.img}
+                            alt=""
+                            onError={addFallbackImage}
+                          />
                         </StepTwoItemImageContainer>
                         <StepTwoItemTitle>{item.name}</StepTwoItemTitle>
                       </StepTwoItem>
@@ -87,23 +100,18 @@ export default SidebarSubMenu;
 
 function SidebarMenuArrow({ active, setActive }) {
   return (
-    <div
+    <SidebarMenuArrowContainer
+      active={active}
       onClick={() => {
         console.log("Click en arrow");
         setActive(false);
       }}
-      className={`cursor-pointer ${active ? "block" : "hidden"}`}
     >
-      <div
-        className={`absolute w-[40px] h-[100px] bg-gray-100 top-[50%] left-[99%] rounded-tr-lg rounded-br-lg`}
-        style={{
-          transform: "translate(0px, -50%) perspective(70px) rotateY(45deg)",
-        }}
-      ></div>
+      <SidebarMenuArrowSquare />
 
-      <div className="absolute w-[30px] h-[30px] top-[50%] left-[99%] translate-x-0 translate-y-[-50%] p-1 flex justify-center items-center">
+      <SidebarArrowContainer>
         <img src="/activo.png" alt="" />
-      </div>
-    </div>
+      </SidebarArrowContainer>
+    </SidebarMenuArrowContainer>
   );
 }
