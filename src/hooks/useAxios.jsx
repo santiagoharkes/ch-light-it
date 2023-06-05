@@ -4,8 +4,6 @@ import { createContext, useContext, useMemo } from "react";
 export const AxiosContext = createContext(Axios);
 
 export function AxiosProvider({ children }) {
-  console.log(import.meta.env);
-
   const axios = useMemo(() => {
     const axios = Axios.create({
       baseURL: `${import.meta.env.VITE_API_ENDPOINT}`,

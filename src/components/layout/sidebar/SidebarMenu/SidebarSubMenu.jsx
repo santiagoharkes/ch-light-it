@@ -28,7 +28,6 @@ import {
 
 function SidebarSubMenu({ endpoint, setEndpoint, data, step, setStep }) {
   const addFallbackImage = (e) => {
-    console.dir(e.target.style);
     e.target.src = "/noImage.jpg";
     e.target.style.objectFit = "contain";
   };
