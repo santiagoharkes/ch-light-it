@@ -1,3 +1,4 @@
+// Components
 import Page from "../components/page/Page";
 
 function Equipamiento() {

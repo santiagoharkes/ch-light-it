@@ -1,6 +1,11 @@
+// Components
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
-import { capitalLetter } from "../../../../utils/capitalLetter";
 import Spinner from "../../../spinner/Spinner";
+
+// Utils
+import { capitalLetter } from "../../../../utils/capitalLetter";
+
+// Styles
 import {
   SidebarArrowContainer,
   SidebarMenuArrowContainer,

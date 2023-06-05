@@ -1,3 +1,4 @@
+// Components
 import { LayoutContainer } from "./LayoutStyles";
 import Header from "./header/Header";
 import Sidebar from "./sidebar/Sidebar";

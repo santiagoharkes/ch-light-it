@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Hooks
 import useGetData from "../../../hooks/useGetData";
+
+// Components
 import SidebarIcon from "./SidebarIcon/SidebarIcon";
 import SidebarSubMenu from "./SidebarMenu/SidebarSubMenu";
+
+// Styles
 import { SidebarContainer, SidebarIconsContainer } from "./SidebarStyles";
 
 function Sidebar() {

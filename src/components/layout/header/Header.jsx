@@ -1,13 +1,17 @@
 import { Fragment } from "react";
+import { useNavigate } from "react-router-dom";
+
+// Components
 import { Transition, Menu } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+
+// Styles
 import {
   HeaderContainer,
   LogoContainer,
   MenuItem,
   NavContainer,
 } from "./HeaderStyles";
-import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -18,11 +22,7 @@ export default function Header() {
         {/* Logo */}
         <LogoContainer onClick={() => navigate("/")}>
           <span className="sr-only">Santiago Harkes Challenge</span>
-          <img
-            className="w-auto h-8"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt=""
-          />
+          <img className="w-auto h-8" src="/logo.png" alt="" />
         </LogoContainer>
 
         {/* Menu dropdown */}

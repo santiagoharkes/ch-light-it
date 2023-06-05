@@ -1,4 +1,6 @@
 import { useQuery } from "react-query";
+
+// Hooks
 import { useAxios } from "./useAxios";
 
 function useGetData(endpoint) {
